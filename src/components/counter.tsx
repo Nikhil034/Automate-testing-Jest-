@@ -7,7 +7,7 @@ export default function Counter() {
 
   return (
     <div className="counter">
-      <h2>Counter: {count}</h2>
+      <h2>Counter: {cont}</h2>
       <button 
         onClick={() => setCount(count + 1)}
         aria-label="Increment"
