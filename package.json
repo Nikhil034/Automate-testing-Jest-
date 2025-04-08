@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "lint-staged": {
+  "*.{js,ts,tsx}": "next lint"
+}
+
     
   },
   "dependencies": {
