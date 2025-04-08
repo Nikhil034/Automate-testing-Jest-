@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 export default function Counter() {
   const [count, setCount] = useState(0)
+  const test="Testing";
+  // This will log every time the component re-renders
 
   return (
     <div className="counter">
@@ -12,13 +14,13 @@ export default function Counter() {
         onClick={() => setCount(count + 1)}
         aria-label="Increment"
       >
-        Increment
+        Increment here
       </button>
       <button 
         onClick={() => setCount(count - 1)}
         aria-label="Decrement"
       >
-        Decrement
+        Decrement here
       </button>
     </div>
   )
