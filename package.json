@@ -9,10 +9,12 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint-staged": {
-  "*.{js,ts,tsx}": "next lint"
+"lint-staged": {
+  "*.{js,ts,tsx,json,md}": [
+    "prettier --write",
+    "next lint --fix"
+  ]
 }
-
     
   },
   "dependencies": {
