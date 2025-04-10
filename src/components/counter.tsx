@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 export default function Counter() {
   const [count, setCount] = useState(0)
-  const test="Testing";
+  // const test="Testing";
   // This will log every time the component re-renders
 
   return (
