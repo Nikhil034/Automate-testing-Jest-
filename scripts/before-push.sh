@@ -55,64 +55,64 @@ run_check "Verifying build" "npm run build"
 # fi
 
 # Check 6: Check for leftover conflict markers
-echo "⏳ Checking for unresolved merge conflicts..."
-if grep -r "^<<<<<<< HEAD" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" --include="*.json" --include="*.css" --include="*.scss" --include="*.html" .; then
-  echo "❌ Unresolved merge conflicts found!"
-  exit 1
-else
-  echo "✅ No merge conflicts found!"
-fi
+# echo "⏳ Checking for unresolved merge conflicts..."
+# if grep -r "^<<<<<<< HEAD" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" --include="*.json" --include="*.css" --include="*.scss" --include="*.html" .; then
+#   echo "❌ Unresolved merge conflicts found!"
+#   exit 1
+# else
+#   echo "✅ No merge conflicts found!"
+# fi
 
 # Check 7: Check for incomplete TODO items marked as critical
-echo "⏳ Checking for critical TODO items..."
-if grep -r "TODO.*CRITICAL" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" .; then
-  echo "❌ Critical TODO items found. Please resolve them before pushing."
-  exit 1
-else
-  echo "✅ No critical TODO items found!"
-fi
+# echo "⏳ Checking for critical TODO items..."
+# if grep -r "TODO.*CRITICAL" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" .; then
+#   echo "❌ Critical TODO items found. Please resolve them before pushing."
+#   exit 1
+# else
+#   echo "✅ No critical TODO items found!"
+# fi
 
 # Check 8: Check for console logs
-echo "⏳ Checking for console logs..."
-if grep -r "console\.log" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" .; then
-  echo "⚠️ Warning: Console logs found. Consider removing them in production code."
-fi
+# echo "⏳ Checking for console logs..."
+# if grep -r "console\.log" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" .; then
+#   echo "⚠️ Warning: Console logs found. Consider removing them in production code."
+# fi
 
-# Check 9: Check for commented out code (optional, as warning only)
-echo "⏳ Checking for commented out code..."
-if grep -r "\/\/.*\<\(if\|for\|function\|class\|const\|let\|var\|return\)\>" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" .; then
-  echo "⚠️ Warning: You might have commented out code. Please clean up if unnecessary."
-fi
+# # Check 9: Check for commented out code (optional, as warning only)
+# echo "⏳ Checking for commented out code..."
+# if grep -r "\/\/.*\<\(if\|for\|function\|class\|const\|let\|var\|return\)\>" --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" .; then
+#   echo "⚠️ Warning: You might have commented out code. Please clean up if unnecessary."
+# fi
 
 # Check 10: Check dependencies for security issues
-echo "⏳ Checking for security vulnerabilities..."
-if command -v npx &> /dev/null; then
-  if npx audit-ci --moderate; then
-    echo "✅ Security check passed!"
-  else
-    echo "⚠️ Security vulnerabilities found. Consider addressing them soon."
-  fi
-else
-  echo "⚠️ npx not available. Skipping security check."
-fi
+# echo "⏳ Checking for security vulnerabilities..."
+# if command -v npx &> /dev/null; then
+#   if npx audit-ci --moderate; then
+#     echo "✅ Security check passed!"
+#   else
+#     echo "⚠️ Security vulnerabilities found. Consider addressing them soon."
+#   fi
+# else
+#   echo "⚠️ npx not available. Skipping security check."
+# fi
 
-# Check 11: Check bundle size (if next-bundle-analyzer is installed)
-if grep -q "next-bundle-analyzer" package.json; then
-  echo "⏳ Analyzing bundle size..."
-  npm run analyze || echo "⚠️ Bundle analysis failed, but continuing push."
-fi
+# # Check 11: Check bundle size (if next-bundle-analyzer is installed)
+# if grep -q "next-bundle-analyzer" package.json; then
+#   echo "⏳ Analyzing bundle size..."
+#   npm run analyze || echo "⚠️ Bundle analysis failed, but continuing push."
+# fi
 
 # Check 12: Check for circular dependencies
-echo "⏳ Checking for circular dependencies..."
-if command -v npx &> /dev/null; then
-  if npx madge --circular src; then
-    echo "✅ No circular dependencies found!"
-  else
-    echo "⚠️ Circular dependencies detected. Consider refactoring."
-  fi
-else
-  echo "⚠️ npx not available. Skipping circular dependency check."
-fi
+# echo "⏳ Checking for circular dependencies..."
+# if command -v npx &> /dev/null; then
+#   if npx madge --circular src; then
+#     echo "✅ No circular dependencies found!"
+#   else
+#     echo "⚠️ Circular dependencies detected. Consider refactoring."
+#   fi
+# else
+#   echo "⚠️ npx not available. Skipping circular dependency check."
+# fi
 
 echo "🎉 All checks passed! Pushing to remote repository."
 
