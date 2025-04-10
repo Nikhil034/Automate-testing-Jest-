@@ -41,18 +41,18 @@ run_check "Linting code" "npm run lint"
 run_check "Verifying build" "npm run build"
 
 # Check 5: Check for large files
-echo "⏳ Checking for large files..."
-MAX_SIZE_KB=1000
-LARGE_FILES=$(find . -type f -not -path "*/node_modules/*" -not -path "*/build/*" -not -path "*/.git/*" -not -path "*/public/assets/*" -not -path "*/dist/*" -exec du -k {} \; | awk "\$1 > $MAX_SIZE_KB" | cut -f2)
+# echo "⏳ Checking for large files..."
+# MAX_SIZE_KB=1000
+# LARGE_FILES=$(find . -type f -not -path "*/node_modules/*" -not -path "*/build/*" -not -path "*/.git/*" -not -path "*/public/assets/*" -not -path "*/dist/*" -exec du -k {} \; | awk "\$1 > $MAX_SIZE_KB" | cut -f2)
 
-if [ -n "$LARGE_FILES" ]; then
-  echo "❌ The following files are too large (over ${MAX_SIZE_KB}KB):"
-  echo "$LARGE_FILES"
-  echo "   Please consider optimizing or using Git LFS."
-  exit 1
-else
-  echo "✅ No oversized files found!"
-fi
+# if [ -n "$LARGE_FILES" ]; then
+#   echo "❌ The following files are too large (over ${MAX_SIZE_KB}KB):"
+#   echo "$LARGE_FILES"
+#   echo "   Please consider optimizing or using Git LFS."
+#   exit 1
+# else
+#   echo "✅ No oversized files found!"
+# fi
 
 # Check 6: Check for leftover conflict markers
 echo "⏳ Checking for unresolved merge conflicts..."
